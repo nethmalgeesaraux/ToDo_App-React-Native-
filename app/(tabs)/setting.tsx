@@ -4,7 +4,7 @@ import React from 'react'
 const settingSeen = () => {
   return (
     <View>
-      <Text>Seen</Text>
+      <Text>setting Seen</Text>
     </View>
   )
 }
