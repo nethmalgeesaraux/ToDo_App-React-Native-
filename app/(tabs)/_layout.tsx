@@ -1,18 +1,17 @@
-// app/(tabs)/_layout.tsx
-import { Tabs } from "expo-router";
+import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "@react-navigation/native";
+import { Tabs } from "expo-router";
 
-export default function TabsLayout() {
+const TabsLayout = () => {
   const { colors } = useTheme();
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.text,
+        tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
-          backgroundColor: colors.background,
+          backgroundColor: colors.surface,
           borderTopWidth: 1,
           borderTopColor: colors.border,
           height: 90,
@@ -23,10 +22,9 @@ export default function TabsLayout() {
           fontSize: 12,
           fontWeight: "600",
         },
-        headerShown: false, // Tabs screens don’t show header
+        headerShown: false,
       }}
     >
-      {/* Todos tab */}
       <Tabs.Screen
         name="index"
         options={{
@@ -36,17 +34,15 @@ export default function TabsLayout() {
           ),
         }}
       />
-
-      {/* Settings tab */}
       <Tabs.Screen
         name="settings"
         options={{
           title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
-          ),
+          tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default TabsLayout;
